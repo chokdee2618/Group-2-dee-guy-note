@@ -1,14 +1,55 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title text-center>
+      Store
     </ion-title>
+    <!-- <ion-buttons end>
+        <button ion-button icon-only (click)="goTotalPage(s.id)">
+          <ion-icon name="contact"></ion-icon>
+        </button>
+      </ion-buttons> -->
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-grid>
+    <ion-row text-center>
+      <ion-col col-1>
+        ลำดับ
+      </ion-col>
+      <ion-col col-5>
+        ชื่อสินค้า
+      </ion-col>
+      <ion-col col-1>
+        ราคา
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item *ngFor="let s of products,let i = index">
+      <ion-grid>
+        <ion-row text-center>
+          <ion-col col-1>
+            {{i+1}}
+          </ion-col>
+          <ion-col col-5>
+            {{s.name}}
+          </ion-col>
+          <ion-col col-1>
+            {{s.price}}
+          </ion-col>
+          <ion-col col-1>
+            <ion-item>
+              <ion-input type="number" placeholder="จำนวน" text-center>จำนวน</ion-input>
+            </ion-item>
+            <ion-col col-1>
+              <button ion-button (click)="goTotalPage(s.id)">เพิ่มลงตะกร้า</button>
+            </ion-col>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block (click)="goCreate()">เพิ่ม</button>
 </ion-content>
